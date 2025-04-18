@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
         console.log('User logged in:', user);
       } else {
         // Optional: Navigate to login page upon logout
-        this.router.navigate(['/login']); // Uncomment if you have specific routes
+        // this.router.navigate(['/login']); // Uncomment if you have specific routes
         console.log('User logged out');
       }
     });
