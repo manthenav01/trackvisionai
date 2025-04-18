@@ -1,0 +1,28 @@
+<!-- Show Login Button if not logged in -->
+<ng-template #showLogin>
+  <div class="login-container">
+    <h1>Welcome</h1>
+    <p-button label="Login with Google" icon="pi pi-google" (click)="loginWithGoogle()"></p-button>
+  </div>
+</ng-template>
+
+<!-- Show Main Layout if logged in -->
+<div *ngIf="user; else showLogin">
+  <p-toolbar>
+    <div class="p-toolbar-group-start">
+       <span class="app-title">My App</span>
+       <!-- Add navigation items here if needed -->
+    </div>
+
+    <div class="p-toolbar-group-end">
+        <span class="user-info">{{ user.displayName || user.email }}</span>
+        <p-avatar [label]="userInitial" shape="circle" styleClass="ml-2"></p-avatar>
+        <p-button label="Logout" icon="pi pi-sign-out" styleClass="p-button-danger ml-2" (click)="logout()"></p-button>
+    </div>
+  </p-toolbar>
+
+  <div class="main-content">
+    <!-- This is where your routed components (like Home) will appear -->
+    <router-outlet />
+  </div>
+</div>
