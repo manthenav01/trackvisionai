@@ -1,28 +1,26 @@
-<div class="app-container">
-  <!-- Show Login Button if not logged in -->
-
-  @if(!user){
-    <div class="login-container">
-      <h1>Track Vision AI</h1>
-      <p-button label="Login with Google" icon="pi pi-google" (click)="loginWithGoogle()"></p-button>
+<div class="app-bg">
+  <header class="app-header">
+    <div class="header-content">
+      <span class="logo">Track Vision AI</span>
+      @if (user) {
+        <div class="user-section">
+          <span class="user-info">{{ user.displayName || user.email }}</span>
+          <p-avatar [label]="userInitial" shape="circle" class="ml-2"></p-avatar>
+          <p-button label="" icon="pi pi-sign-out" class="logout-btn ml-2" (click)="logout()"></p-button>
+        </div>
+      }
     </div>
-  }@else {
-    <p-toolbar>
-      <div class="p-toolbar-group-start">
-        <span class="app-title">Track Vision AI</span>
-        <!-- Add navigation items here if needed -->
-      </div>
+  </header>
 
-      <div class="p-toolbar-group-end">
-        <span class="user-info">{{ user.displayName || user.email }}</span>
-        <p-avatar [label]="userInitial" shape="circle" styleClass="ml-2"></p-avatar>
-        <p-button label="" icon="pi pi-sign-out" styleClass="p-button-danger ml-2" (click)="logout()"></p-button>
+  <main class="main-content">
+    @if (!user) {
+      <div class="login-container">
+        <h1>Welcome to Track Vision AI</h1>
+        <p-button label="Login with Google" icon="pi pi-google" (click)="loginWithGoogle()"></p-button>
       </div>
-    </p-toolbar>
-
-    <div class="main-content">
-      <!-- This is where your routed components (like Home) will appear -->
+    }
+    @if (user) {
       <router-outlet></router-outlet>
-    </div>
-  }
+    }
+  </main>
 </div>

@@ -1,6 +1,6 @@
 <div class="upload-container">
   <input type="file" (change)="onFileSelected($event)" />
-  <button pButton type="button" label="Upload Document" (click)="uploadDocument()" [disabled]="!selectedFile"></button>
+  <p-button type="button" label="Upload Document" (click)="uploadDocument()" [disabled]="!selectedFile"></p-button>
     @if (uploadProgress !== null) {
         <p>Upload Progress: {{ uploadProgress }}%</p>
     }

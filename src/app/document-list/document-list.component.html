@@ -1,14 +1,30 @@
-<div class="document-list-container">
-  <h2>Available Documents</h2>
-  @for (doc of documents$ | async; track doc.id) {
-    <li>
-      <a [href]="doc.url" target="_blank">{{ doc.name }}</a>
-      @if (doc.uploadedAt) {
-        <span> | Uploaded: {{ doc.uploadedAt?.toDate() | date:'short' }}</span>
+<div class="document-list-header">
+  <h2>Visa Documents</h2>
+  <button class="upload-btn" routerLink="/upload">Upload Visa Document</button>
+</div>
+<div class="document-cards">
+  @if (documents$ | async; as docs) {
+    @if (docs.length > 0) {
+      @for (doc of docs; track doc.id) {
+        <div class="doc-card">
+          <div class="doc-info">
+            <div class="doc-title">{{ doc.name }}</div>
+            <div class="doc-meta">
+              <span class="badge status-badge" 
+                [ngClass]="{'approved': doc.status === 'approved', 'pending': doc.status === 'pending', 'rejected': doc.status === 'rejected'}">
+                {{ doc.status || 'pending' | titlecase }}
+              </span>
+              <span class="uploaded-date">{{ doc.uploadedAt?.toDate() | date:'mediumDate' }}</span>
+            </div>
+          </div>
+          <div class="doc-actions">
+            <a [href]="doc.url" target="_blank" class="view-btn">View</a>
+            <button class="delete-btn" (click)="deleteDocument(doc)">Delete</button>
+          </div>
+        </div>
       }
-    </li>
-  }
-  @if ((documents$ | async)?.length === 0) {
-    <p>No documents found.</p>
+    } @else {
+      <p class="no-docs">No visa documents found.</p>
+    }
   }
 </div>

@@ -51,6 +51,8 @@ export class UploadDocumentComponent {
             name: file.name,
             url: this.uploadUrl,
             uploadedAt: serverTimestamp(),
+            status: 'active',
+            
           });
           alert('File uploaded and metadata saved!');
         } catch (error: any) {
