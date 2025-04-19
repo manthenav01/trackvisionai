@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background: #fff !important;
+  color: #222;
+}
+
+:host ::ng-deep .p-toolbar {
+  background: #fff !important;
+  color: #222 !important;
+}

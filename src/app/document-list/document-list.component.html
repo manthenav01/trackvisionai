@@ -1,0 +1,14 @@
+<div class="document-list-container">
+  <h2>Available Documents</h2>
+  @for (doc of documents$ | async; track doc.id) {
+    <li>
+      <a [href]="doc.url" target="_blank">{{ doc.name }}</a>
+      @if (doc.uploadedAt) {
+        <span> | Uploaded: {{ doc.uploadedAt?.toDate() | date:'short' }}</span>
+      }
+    </li>
+  }
+  @if ((documents$ | async)?.length === 0) {
+    <p>No documents found.</p>
+  }
+</div>

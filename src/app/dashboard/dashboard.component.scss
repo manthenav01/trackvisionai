@@ -1,0 +1,20 @@
+/* ...existing code... */
+.centered-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+.dashboard-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.upload-top-right {
+  /* Place upload at top right */
+}
+.dashboard-doc-list {
+  margin-top: 2rem;
+}
+/* ...existing code... */

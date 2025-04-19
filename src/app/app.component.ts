@@ -16,8 +16,6 @@ import { AvatarModule } from 'primeng/avatar'; // For user display
   standalone: true, // Ensure component is standalone
   imports: [
     RouterOutlet,
-    AsyncPipe,
-    NgIf,
     ToolbarModule, // Add PrimeNG modules here
     ButtonModule,
     AvatarModule
@@ -37,11 +35,11 @@ export class AppComponent implements OnInit, OnDestroy {
       this.user = user;
       if (user) {
         // Optional: Navigate to home or main area upon login
-        this.router.navigate(['/upload']); // Uncomment if you have specific routes
+        this.router.navigate(['/home']); // Uncomment if you have specific routes
         console.log('User logged in:', user);
       } else {
         // Optional: Navigate to login page upon logout
-        // this.router.navigate(['/login']); // Uncomment if you have specific routes
+        this.router.navigate(['/']); // Uncomment if you have specific routes
         console.log('User logged out');
       }
     });

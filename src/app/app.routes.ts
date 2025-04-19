@@ -1,15 +1,12 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard'; // Import the guard
-import { UploadDocumentComponent } from './upload-document/upload-document.component'; // Import the component
+import { DashboardComponent } from './dashboard/dashboard.component'; // Import the new component
 
 export const routes: Routes = [
-  // Example existing route (adjust if you have one)
-  // { path: '', component: YourHomeComponent },
-
   {
-    path: 'upload',
-    component: UploadDocumentComponent,
-    canActivate: [authGuard] // Protect this route with the guard
+    path: 'home',
+    component: DashboardComponent,
+    canActivate: [authGuard]
   },
 
   // Add other routes here

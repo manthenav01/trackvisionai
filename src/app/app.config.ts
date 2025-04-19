@@ -8,53 +8,46 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 // Import the Material preset and color palettes
 import Material from '@primeng/themes/material';
-
+import { definePreset } from '@primeng/themes';
 // Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-// import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
-// --- Create the custom theme object ---
-const MyTheme = {
-    ...Material, // Start with the base Material preset
-    colorScheme: {
-      light: {
-        primary: {
-          //colorScheme: 'teal' // Assign the full teal palette
-        '50': '#e0f2f7',
-        '100': '#b2ebf2',
-        '200': '#80deea',
-        '300': '#4dd0e1',
-        '400': '#26c6da',
-        '500': '#00bcd4', // Main primary color (teal 500)
-        '600': '#00acc1',
-        '700': '#0097a7',
-        '800': '#00838f',
-        '900': '#006064',
-        '950': '#004d40'
-        },
-        surface: {
-         // colorScheme: 'zinc' // Assign the full zinc palette
-          '0': '#ffffff', // Typically white for light mode surface 0
-          '50': '#fafafa',
-          '100': '#f4f4f5', // Main surface color (zinc 100)
-          '200': '#e4e4e7',
-          '300': '#d4d4d8',
-          '400': '#a1a1aa',
-          '500': '#71717a',
-          '600': '#52525b',
-          '700': '#3f3f46',
-          '800': '#27272a',
-          '900': '#18181b',
-          '950': '#09090b'
-        }
+import Aura from '@primeng/themes/aura';
+
+const myTheme = definePreset(Aura, {
+  semantic: {
+      primary: {
+          50: '{indigo.50}',
+          100: '{indigo.100}',
+          200: '{indigo.200}',
+          300: '{indigo.300}',
+          400: '{indigo.400}',
+          500: '{indigo.500}',
+          600: '{indigo.600}',
+          700: '{indigo.700}',
+          800: '{indigo.800}',
+          900: '{indigo.900}',
+          950: '{indigo.950}'
       },
-      
+      surface: {
+        0: '#ffffff',
+        50: '{zinc.50}',
+        100: '{zinc.100}',
+        200: '{zinc.200}',
+        300: '{zinc.300}',
+        400: '{zinc.400}',
+        500: '{zinc.500}',
+        600: '{zinc.600}',
+        700: '{zinc.700}',
+        800: '{zinc.800}',
+        900: '{zinc.900}',
+        950: '{zinc.950}'
     }
-    // You can further customize other aspects of the Material preset here if desired
-};
-// --- End custom theme object ---
+  }
+});
 
 
 // TODO: Replace with your actual Firebase configuration
@@ -77,14 +70,15 @@ export const appConfig: ApplicationConfig = {
     providePrimeNG({
       theme: {
         // Use the customized theme object
-        preset: MyTheme
+        preset: myTheme
       }
     }),
 
     // Firebase Providers
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
-    // provideFirestore(() => getFirestore()),
-    // provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    provideAnimationsAsync(),
   ]
 };

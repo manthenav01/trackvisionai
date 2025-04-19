@@ -1,1 +1,11 @@
-<p>upload-document works!</p>
+<div class="upload-container">
+  <input type="file" (change)="onFileSelected($event)" />
+  <button pButton type="button" label="Upload Document" (click)="uploadDocument()" [disabled]="!selectedFile"></button>
+    @if (uploadProgress !== null) {
+        <p>Upload Progress: {{ uploadProgress }}%</p>
+    }
+
+    @if (uploadUrl) {
+        <p>File uploaded! <a [href]="uploadUrl" target="_blank">View Document</a></p>
+    }
+</div>

@@ -1,0 +1,14 @@
+@if ((documentsCount$ | async) === 0) {
+  <div class="centered-upload">
+    <app-upload-document></app-upload-document>
+  </div>
+} @else {
+  <div class="dashboard-header">
+    <div class="upload-top-right">
+      <app-upload-document></app-upload-document>
+    </div>
+  </div>
+  <div class="dashboard-doc-list">
+    <app-document-list></app-document-list>
+  </div>
+}
