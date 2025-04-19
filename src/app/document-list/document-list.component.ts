@@ -1,7 +1,12 @@
-import { AsyncPipe, CommonModule, DatePipe, TitleCasePipe } from '@angular/common';
+import { AsyncPipe, CommonModule, DatePipe, TitleCasePipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Firestore, collectionData, collection, deleteDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+// Angular Material modules
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 interface DocumentMeta {
   name: string;
@@ -14,8 +19,19 @@ interface DocumentMeta {
 @Component({
   selector: 'app-document-list',
   templateUrl: './document-list.component.html',
+  styleUrls: ['./document-list.component.scss'],
   standalone: true,
-  imports: [AsyncPipe, DatePipe, TitleCasePipe, CommonModule],
+  imports: [
+    AsyncPipe,
+    DatePipe,
+    TitleCasePipe,
+    CommonModule,
+    NgClass,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+  ],
 })
 export class DocumentListComponent {
   private firestore = inject(Firestore);

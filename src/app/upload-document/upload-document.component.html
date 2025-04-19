@@ -1,11 +1,12 @@
 <div class="upload-container">
   <input type="file" (change)="onFileSelected($event)" />
-  <p-button type="button" label="Upload Document" (click)="uploadDocument()" [disabled]="!selectedFile"></p-button>
-    @if (uploadProgress !== null) {
-        <p>Upload Progress: {{ uploadProgress }}%</p>
-    }
-
-    @if (uploadUrl) {
-        <p>File uploaded! <a [href]="uploadUrl" target="_blank">View Document</a></p>
-    }
+  <button mat-raised-button color="primary" type="button" (click)="uploadDocument()" [disabled]="!selectedFile">
+    Upload Document
+  </button>
+  @if (uploadProgress !== null) {
+    <p>Upload Progress: {{ uploadProgress }}%</p>
+  }
+  @if (uploadUrl) {
+    <p>File uploaded! <a [href]="uploadUrl" target="_blank">View Document</a></p>
+  }
 </div>

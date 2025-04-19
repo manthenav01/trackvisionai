@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Firestore, collection, addDoc, serverTimestamp } from '@angular/fire/firestore';
-import { Button } from 'primeng/button';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-upload-document',
   templateUrl: './upload-document.component.html',
   styleUrl: './upload-document.component.scss',
   standalone: true,
-  imports: [Button],
+  imports: [MatButtonModule],
 })
 export class UploadDocumentComponent {
   selectedFile: File | null = null;

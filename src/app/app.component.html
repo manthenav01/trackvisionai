@@ -1,22 +1,25 @@
 <div class="app-bg">
-  <header class="app-header">
+  <mat-toolbar color="primary" class="app-header">
     <div class="header-content">
       <span class="logo">Track Vision AI</span>
       @if (user) {
         <div class="user-section">
           <span class="user-info">{{ user.displayName || user.email }}</span>
-          <p-avatar [label]="userInitial" shape="circle" class="ml-2"></p-avatar>
-          <p-button label="" icon="pi pi-sign-out" class="logout-btn ml-2" (click)="logout()"></p-button>
+          <button mat-icon-button class="logout-btn ml-2" (click)="logout()" aria-label="Logout">
+            <mat-icon>logout</mat-icon>
+          </button>
         </div>
       }
     </div>
-  </header>
+  </mat-toolbar>
 
   <main class="main-content">
     @if (!user) {
       <div class="login-container">
         <h1>Welcome to Track Vision AI</h1>
-        <p-button label="Login with Google" icon="pi pi-google" (click)="loginWithGoogle()"></p-button>
+        <button mat-raised-button color="primary" (click)="loginWithGoogle()">
+          <mat-icon>login</mat-icon> Login with Google
+        </button>
       </div>
     }
     @if (user) {

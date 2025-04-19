@@ -6,19 +6,27 @@ import { Subscription } from 'rxjs';
 // Firebase Authentication
 import { Auth, authState, signInWithPopup, signOut, GoogleAuthProvider, User } from '@angular/fire/auth';
 
-// PrimeNG Modules (for layout and buttons)
-import { ToolbarModule } from 'primeng/toolbar';
-import { ButtonModule } from 'primeng/button';
-import { AvatarModule } from 'primeng/avatar'; // For user display
+// Angular Material Modules
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
   standalone: true, // Ensure component is standalone
   imports: [
     RouterOutlet,
-    ToolbarModule, // Add PrimeNG modules here
-    ButtonModule,
-    AvatarModule
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatDialogModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

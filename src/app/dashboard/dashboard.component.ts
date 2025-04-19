@@ -9,6 +9,7 @@ import { DocumentListComponent } from '../document-list/document-list.component'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
   standalone: true,
   imports: [CommonModule, UploadDocumentComponent, DocumentListComponent],
 })
